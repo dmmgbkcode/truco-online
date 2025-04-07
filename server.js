@@ -1,11 +1,4 @@
 // server.js
-const io = require("socket.io")(server, {
-  cors: {
-    origin: ["https://truco-chi.vercel.app/"],
-    methods: ["GET", "POST"]
-  }
-});
-
 const express = require("express");
 const http = require("http");
 const { Server } = require("socket.io");
