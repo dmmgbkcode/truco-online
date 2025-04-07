@@ -8,7 +8,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "*", // Aceita todas as origens durante o desenvolvimento/teste
+    origin: "https://truco-git-main-dmmgbks-projects.vercel.app", // Aceita todas as origens durante o desenvolvimento/teste
     methods: ["GET", "POST"]
   }
 });
