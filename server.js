@@ -1,4 +1,11 @@
 // server.js
+const io = require("socket.io")(server, {
+  cors: {
+    origin: ["https://truco-chi.vercel.app/"],
+    methods: ["GET", "POST"]
+  }
+});
+
 const express = require("express");
 const http = require("http");
 const { Server } = require("socket.io");
@@ -9,11 +16,6 @@ const server = http.createServer(app);
 const io = new Server(server);
 
 app.use(express.static(path.join(__dirname)));
-
-// Adiciona uma rota básica para verificação de saúde
-app.get('/health', (req, res) => {
-  res.status(200).send('Servidor está funcionando!');
-});
 
 const rooms = {};
 
@@ -436,8 +438,6 @@ io.on("connection", (socket) => {
   });
 });
 
-// Usar a porta fornecida pelo ambiente do Render ou a porta 3000 como fallback
-const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
+server.listen(3000, () => {
+  console.log("Servidor rodando na porta 3000");
 });
